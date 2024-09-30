@@ -1,6 +1,7 @@
 const { MongoClient } = require('mongodb');
-require('dotenv').config();
+const dotenv = require('dotenv');
 
+dotenv.config();
 class DBClient {
   constructor() {
     const dbport = process.env.DB_PORT || 27017;
@@ -20,7 +21,7 @@ class DBClient {
   }
 
   isAlive() {
-    return this.client.isConnected();
+    return this.client.topology.isConnected();
   }
 
   async nbUsers() {
