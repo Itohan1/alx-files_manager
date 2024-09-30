@@ -38,7 +38,7 @@ class DBClient {
   async nbFiles() {
     try {
       const userCollection = this.db.collection('files');
-      const userCount = userCollection.countDocuments();
+      const userCount = await userCollection.countDocuments();
       return userCount;
     } catch (err) {
       console.error('Error counting files', err);
