@@ -19,7 +19,7 @@ class DBClient {
         this.db = this.client.db(dbstorage);
       })
       .catch((err) => {
-        console.error('Failed to connect to MongoDB', err);
+        console.error(err);
       });
   }
 
@@ -33,7 +33,7 @@ class DBClient {
       const userCount = await userCollection.countDocuments();
       return userCount;
     } catch (err) {
-      console.error('Error counting users', err);
+      console.error(err);
       return 0;
     }
   }
@@ -44,7 +44,7 @@ class DBClient {
       const userCount = await userCollection.countDocuments();
       return userCount;
     } catch (err) {
-      console.error('Error counting files', err);
+      console.error(err);
       return 0;
     }
   }
