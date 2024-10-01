@@ -1,9 +1,7 @@
 const { MongoClient } = require('mongodb');
 const dotenv = require('dotenv');
 
-
 dotenv.config();
-
 
 class DBClient {
   constructor() {
@@ -51,4 +49,4 @@ class DBClient {
 }
 
 const dbClient = new DBClient();
-export default dbClient;
+module.exports = dbClient;
