@@ -12,11 +12,18 @@ class AppController {
     });
   }
 
-  static getStats(request, response) {
-    response.status(200).json({
-      users: dbClient.nbUsers(),
-      files: dbClient.nbFiles(),
-    });
+  static async getStats(request, response) {
+    try {
+      const dusers = await dbClient.nbUsers();
+      const dfiles = await dbClient.nbFiles();
+
+      response.status(200).json({
+        users: dusers,
+        files: dfiles,
+      });
+    } catch (error) {
+      response.status(500).json({ error: 'Error fetching stata' });
+    }
   }
 }
 
